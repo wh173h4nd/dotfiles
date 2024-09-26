@@ -6,8 +6,8 @@
 (setq visible-bell nil)
 
 ;; Color theme
-(require 'gruber-darker-theme)
-(load-theme 'gruber-darker t)
+(require 'flatland-black-theme)
+(load-theme 'flatland-black t)
 
 ;; Statusline
 (column-number-mode 1)

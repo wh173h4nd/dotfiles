@@ -17,7 +17,7 @@
                  'evil
                  'nix-mode
                  'markdown-mode
-                 'gruber-darker-theme)
+                 'flatland-black-theme)
 
 (let ((configs-dir "~/.emacs.d/configs/")
       (configs '("user-interface.el" "evil-mode.el" "indents.el" "backups.el")))
