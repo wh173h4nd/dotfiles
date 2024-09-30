@@ -46,52 +46,52 @@ ${BOLD}Commands:${NORMAL}
     "
 }
 
-deploy_configs() {
+_create_symlink() {
+    echo -e "${BOLD}${YELLOW}INFO:${NORMAL} Creating syslink for ${BOLD}$config${NORMAL}..."
+    ln -s $CONFIGS_DIR/$2 $1/$2
+    echo -e "${BOLD}${GREEN}OK:${NORMAL} Syslink for ${BOLD}$config${NORMAL} created!"
+    echo ""
+}
+
+_delete_symlink() {
+    echo -e "${BOLD}${YELLOW}INFO:${NORMAL} Removing syslink for ${BOLD}$config${NORMAL}..."
+    rm $1/$2
+    echo -e "${BOLD}${GREEN}OK:${NORMAL} Syslink for ${BOLD}$config${NORMAL} removed!"
+    echo ""
+}
+
+baseconf() {
     logo
     for conf_dir in "${CONFIGS[@]}"; do
         eval "direct=(\"\${$conf_dir[@]}\")"
         for config in "${direct[@]}"; do
-            declare DIR 
-            if [[ "$conf_dir" = "HOME_CONFS" ]]; then
-                DIR=$HOME_DIR
-            elif [[ "$conf_dir" = "DOT_CONFIG_CONFS" ]]; then
-                DIR=$DOT_CONFIG_DIR
-            fi
-            echo -e "${BOLD}${YELLOW}INFO:${NORMAL} Creating syslink for ${BOLD}$config${NORMAL}..."
-            ln -s $CONFIGS_DIR/$config $DIR/$config
-            echo -e "${BOLD}${GREEN}OK:${NORMAL} Syslink for ${BOLD}$config${NORMAL} created!"
-            echo ""
-        done
-    done
-}
 
-delete_configs() {
-    for conf_dir in "${CONFIGS[@]}"; do
-        eval "direct=(\"\${$conf_dir[@]}\")"
-        for config in "${direct[@]}"; do
             declare DIR 
             if [[ "$conf_dir" = "HOME_CONFS" ]]; then
                 DIR=$HOME_DIR
             elif [[ "$conf_dir" = "DOT_CONFIG_CONFS" ]]; then
                 DIR=$DOT_CONFIG_DIR
             fi
-            echo -e "${BOLD}${YELLOW}INFO:${NORMAL} Removing syslink for ${BOLD}$config${NORMAL}..."
-            rm $DIR/$config
-            echo -e "${BOLD}${GREEN}OK:${NORMAL} Syslink for ${BOLD}$config${NORMAL} removed!"
-            echo ""
+
+            if [[ "$1" = "deploy" ]]; then
+                _create_symlink $DIR $config
+            elif [[ "$1" = "delete" ]]; then
+                _delete_symlink $DIR $config
+            fi
+
         done
     done
 }
 
 case $1 in
     "deploy")
-        deploy_configs
+        baseconf deploy
+        ;;
+    "delete")
+        baseconf delete
         ;;
     "help")
         help_message
-        ;;
-    "delete")
-        delete_configs
         ;;
     *)
         help_message
