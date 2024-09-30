@@ -19,3 +19,6 @@
 ;; Line numbers
 (setq display-line-numbers-type 'relative)
 (global-display-line-numbers-mode 1)
+
+;; Disable beep
+(setq ring-bell-function 'ignore)
