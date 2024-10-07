@@ -1,7 +1,7 @@
-#!/bin/sh
+#!/bin/bash
 
-HOME_CONFS=( .emacs.d .tmux.conf )
-DOT_CONFIG_CONFS=( nvim )
+HOME_CONFS=( .zshrc .tmux.conf )
+DOT_CONFIG_CONFS=( nvim alacritty )
 
 CONFIGS=(HOME_CONFS DOT_CONFIG_CONFS)
 CURRENT_PATH=$(realpath .)

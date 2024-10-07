@@ -24,7 +24,3 @@ opt.swapfile = false
 opt.guicursor = ""
 opt.showmode = false
 opt.scrolloff = 5
-
-vim.cmd[[colorscheme lunaperche]]
-
-
