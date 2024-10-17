@@ -1,0 +1,3 @@
+configs/.emacs.d/*
+!configs/.emacs.d/init.el
+!configs/.emacs.d/configs
