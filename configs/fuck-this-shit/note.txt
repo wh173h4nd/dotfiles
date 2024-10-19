@@ -1,0 +1,3 @@
+Reminder to myself.
+I'm tired of endless customization of everything: customizing distro(gentoo, void, nixos, etc), customizing window manager, customizing editor, customizing bar and so on. I want the system to just work.
+If you have free time again or want to play with the operating system again, you should do something useful: create a startup or go for a walk outside.
